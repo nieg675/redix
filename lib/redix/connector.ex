@@ -153,6 +153,8 @@ defmodule Redix.Connector do
         end
 
       {:error, reason} ->
+        raise inspect(reason)
+
         :telemetry.execute([:redix, :failed_connection], %{}, %{
           connection: conn_pid,
           connection_name: opts[:name],
